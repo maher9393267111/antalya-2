@@ -18,8 +18,8 @@ import { MdOutlineLocalLaundryService } from "react-icons/md";
 import { RiParkingBoxLine } from "react-icons/ri";
 import { CiForkAndKnife } from "react-icons/ci";
 import { useRouter } from "next/router";
-import { Properties } from "../../../data/Propertiesdata";
-import { featuredProperties } from "../../../data/FeaturedProperties.js"
+import { Properties } from "../../..//components/data/Propertiesdata";
+import { featuredProperties } from "../../../components/data/FeaturedProperties.js"
 
 import { FiWifi } from "react-icons/fi";
 import Header from "../../../components/shared/Header";
