@@ -21,15 +21,9 @@ function PopularRealEstateSection({data}) {
                 containerBorder={`border-primary `}
                 textColor={`text-primary`}
                 dotBgColor={`bg-primary`}
-                summaryText={'Featured Property'} 
-            />
+                summaryText={'أحدث العقارات'} ></HeaderSummary>
 
-            <h2 
-                className={`text-[30px] font-semibold text-[#000] sm:text-[40px] md:text-[38px] leading-tight text-center mb-[5px]`}
-            >
-                Our choice of popular real estate
-                
-            </h2>
+       
             </motion.div>
 
         <div className="section-body mt-[60px]">

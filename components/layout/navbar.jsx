@@ -70,8 +70,8 @@ export default function Navbar() {
               <p> (+90)5385809972</p>
             </div>
             <div className="flex flex-row space-x-2">
-              <FaRegClock className="w-5 h-5 text-gray-500" />
-              <p>Mon-Sat: 07:00 - 17:00</p>
+              <FaRegClock className="w-5 h-5 arabic text-gray-500" />
+              <p className="arabic">الاثنين-السبت: 07:00 - 17:00</p>
             </div>
           </div>
           <div className="flex flex-row space-x-4  justify-center items-center ">
