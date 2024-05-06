@@ -38,7 +38,8 @@ import { getDocument } from '@/functions/firebase/getData';
 import Loader from '@/components/common/Loader';
 import { useAuth } from '@/functions/context';
 
-import React ,{useState ,useEffect} from 'react';
+
+import React ,{useState ,useEffect ,useRef} from 'react';
 import Layout from "@/components/layout";
 
 function PropertyDetail() {
@@ -54,6 +55,70 @@ function PropertyDetail() {
     const propertyId = router.query.propertyId;
     
   console.log("IDDD" , property)
+
+  const nameRef = useRef(null);
+  const mailRef = useRef(null);
+  const mobileRef = useRef(null);
+  const descriptionRef = useRef(null);
+
+  function Submit(e) {
+	e.preventDefault();
+	const formEle = document.querySelector("form");
+	const name = nameRef?.current?.value;
+	const phone = mobileRef?.current?.value;
+	const email = mailRef?.current?.value;
+	const desc = descriptionRef?.current?.value;
+
+	console.log(name, phone, email, desc);
+
+	// pushing data to google sheet
+
+	// const formDatab = new FormData(formEle);
+	const formDatab = formEle;
+	console.log(formDatab, "body");
+
+	
+
+	setPageLoading(true);
+
+	fetch("/api/contact", {
+	  method: "POST",
+	  headers: { "Content-Type": "application/json" },
+
+	  body: JSON.stringify({
+		name: name,
+		email: email,
+		property: property?.title,
+		desc:'ارجو التواصل',
+
+		phone: phone,
+	  }),
+	})
+	  .then((res) => res.json())
+	  .then((data) => {
+		setPageLoading(false);
+		console.log(data);
+		alert("شكرا لك سنتواصل معكم قريبا");
+		// clear the form
+		try {
+		  nameRef.current.value = "";
+		  mailRef.current.value = "";
+		  if (mobileRef.current) mobileRef.current.value = "";
+		  descriptionRef.current.value = "";
+		} catch (error) {
+		  console.log(error);
+		}
+	  })
+	  .catch((error) => {
+		setPageLoading(false);
+		console.log(error);
+	  });
+  }
+
+
+
+
+
   
     useEffect(() => {
       const getProduct = async () => {
@@ -79,6 +144,9 @@ function PropertyDetail() {
 
 
 
+
+
+
 	
 	// const { propertyId } = router.query;
 	// const id = parseInt(propertyId);
@@ -98,14 +166,24 @@ function PropertyDetail() {
 					description={property?.title}
 					image={property?.images?.length && property?.images[0]}
 					cutout>
-					<Link href={`/postproperty`}>
-						<button className="btn-primary rounded-md mt-[60px] flex mx-auto gap-3 group">
-							Request info
+					
+					<a href="https://wtspee.com/905385809972" target="_blank">
+						<button className=" arabic btn-primary rounded-md mt-[60px] flex mx-auto gap-3 group">
+						تواصل معنا
+
+          
+
 							<figure className="w-[13px] group-hover:translate-x-[2px] group-hover:-translate-y-[2px] transition-all">
 								<Image src={arrow} alt="arrow" className="block w-full" />
 							</figure>
+
+              
+
 						</button>
-					</Link>
+				
+        </a>
+					
+
 				</Header>
 				<div className="general-margin mt-20">
 				{/* Gallery */}
@@ -273,20 +351,32 @@ function PropertyDetail() {
 									</p>
 								</div>
 								<div>
-									<form className="w-full mt-4">
+									<form
+									 onSubmit={(e) => Submit(e)}
+									
+									className="w-full mt-4">
 										<input
+										    name="name"
+											ref={nameRef}
+											required={true}
 											className="border p-2 py-4 rounded w-full"
 											type="text"
 											placeholder="John Doe"
 										/>{" "}
 										<br />
 										<input
+										    name="Email"
+											ref={mailRef}
+											required={true}
 											className="border p-2 py-4 rounded my-5 w-full"
 											type="text"
 											placeholder="contact@gmail.com"
 										/>{" "}
 										<br />
 										<input
+										    name="Phone"
+											ref={mobileRef}
+											required={true}
 											className="border p-2 rounded w-full py-4"
 											type="text"
 											placeholder="+1 345-678"
@@ -295,9 +385,15 @@ function PropertyDetail() {
 										<button className=" arabic justify-center border w-full text-center py-4 btn-secondary">
 											ارسال الى الايميل
 										</button>
-
+										{/* 90 538 580 99 72⁩ */}
 										<button className=" arabic justify-center mt-4 border w-full text-center py-4 btn-secondary">
+
+
+<a href="https://wtspee.com/905385809972" target="_blank">
+
 											تواصل وتس اب
+
+											</a>
 										</button>
 
 

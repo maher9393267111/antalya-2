@@ -7,25 +7,27 @@ import arrow from '../../public/650adcad05bc07eb4bae8dbf_arrow.svg'
 function HomeHero() {
   return (
     <Header
-          summaryText={"Welcome to Property"}
-          title={'Where dream homes become a reality.'}
-          image={"home"}
-          description={'Discover more than 1,000+ property showcases.'}
+          summaryText={"مرحبا بكم في موقعنا"}
+          title={'حيث تصبح منازل الأحلام حقيقة'}
+          image={"/hero.jpg"}
+          description={'اكتشف أكثر من 1000+ عرض عقاري.'}
           styles={"mt-16"}
         >
-          <Link href={`/postproperty`}>
-            <button className="btn-primary rounded-md mt-[60px] flex justify-center items-center gap-3 group">
-              Post a property
+           <a href="https://wtspee.com/905385809972" target="_blank">
+						<button className=" arabic btn-primary rounded-md mt-[60px] flex mx-auto gap-3 group">
+						تواصل معنا
 
-              <figure className="w-[13px] group-hover:translate-x-[2px] group-hover:-translate-y-[2px] transition-all">
-                <Image 
-                  src={arrow}
-                  alt="arrow"
-                  className="block w-full"
-                />
-              </figure>
-            </button>
-          </Link>
+          
+
+							<figure className="w-[13px] group-hover:translate-x-[2px] group-hover:-translate-y-[2px] transition-all">
+								<Image src={arrow} alt="arrow" className="block w-full" />
+							</figure>
+
+              
+
+						</button>
+				
+        </a>
         </Header>
   )
 }
