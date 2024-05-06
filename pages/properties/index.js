@@ -15,7 +15,7 @@ function Categories() {
     <div>
       <Header {...PropertiesHero} />
 
-      <section className="px-[5%] py-[30px] ">
+      {/* <section className="px-[5%] py-[30px] ">
         <div className="section-content max-w-[1200px] mx-auto">
             <div className="section-body">
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 items-start justify-start">
@@ -50,7 +50,7 @@ function Categories() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
 
     </div>
