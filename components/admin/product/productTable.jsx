@@ -18,9 +18,9 @@ const [currentProducts , setCurrentProducts] = useState(products)
 
   const deletePost = async (article) =>{ 
     
-    await deleteDoc(doc(db, "articles",article?.id))
+    await deleteDoc(doc(db, "villa",article?.id))
     await  deleteImages(article?.images)
-    Message.success(' article deleted successfully')
+    Message.success(' Property deleted successfully')
 
    let filtered = products?.filter((item)=>item.id !== article.id)
   
@@ -34,17 +34,24 @@ const [currentProducts , setCurrentProducts] = useState(products)
 
   const columns = [
     {
-      title: "English title",
+      title: "title",
       // same name from database   // category={title ,....}
       dataIndex: "title",
     },
 
     {
-      title: "Arabic Title",
+      title: "Rent price",
       // same name from database   // category={title ,....}
-      dataIndex: "titlear",
+      dataIndex: "rentprice",
     },
 
+    {
+      title: "Sell price",
+      // same name from database   // category={title ,....}
+      dataIndex: "sellprice",
+    },
+
+    
     {
       title: "Image",
       // single category {record} --> record.image.url === category.image.url

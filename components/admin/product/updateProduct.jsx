@@ -41,10 +41,10 @@ const UpdateProductMain = ({ product }) => {
       await deleteImages(imagesToDelete);
       const newImagesUploaded = await uploadImages(files);
       values.images = [...values.images, ...newImagesUploaded];
-      await updateDoc(doc(db, "articles", id), values);
+      await updateDoc(doc(db, "property", id), values);
 
 
-      message.success("Product Updated Successfully");
+      message.success("Property Updated Successfully");
       // router.push("/admin?tab=1");
     } catch (error) {
       message.error(error.message);

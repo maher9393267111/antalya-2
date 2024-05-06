@@ -43,16 +43,12 @@ const RecipeForm = ({
   initialValues,
   files,
   setFiles,
-  
+
   isupdate = false,
   videoFile,
   setVideoFile,
 }) => {
   const [images, setImages] = useState(initialValues?.images || []);
-
-
-
-
 
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
@@ -68,24 +64,32 @@ const RecipeForm = ({
           onFinish={(values) =>
             // name of our function
             onFinish({
-             
               ...values,
               images,
-              
             })
           }
           initialValues={{
             title: initialValues?.title || "",
-            titlear: initialValues?.titlear || "",
-           
+
             desc: initialValues?.desc || "",
-            descar: initialValues?.descar || "",
-           
-        
+            rentprice: initialValues?.rentprice || "",
+            sellprice: initialValues?.sellprice || "",
+            location: initialValues?.parks || "",
+            garage: initialValues?.garage || false,
+            garden: initialValues?.garden || false,
+            jin: initialValues?.jin || false,
+            camera: initialValues?.camera || false,
+            dishwasher: initialValues?.dishwasher || false,
+            pool: initialValues?.pool || false,
+            elevator: initialValues?.elevator || false,
+            laundry: initialValues?.laundry || false,
+            internet: initialValues?.internet || false,
+            beds: initialValues?.beds || "",
+            paths: initialValues?.paths || "",
+            space: initialValues?.paths || "",
+            location: initialValues?.location || "",
           }}
         >
-          
-
           <Form.Item
             rules={[
               {
@@ -94,73 +98,177 @@ const RecipeForm = ({
               },
             ]}
             name="title"
-            label="Title english"
+            label="Title "
           >
             <Input className="py-2" />
           </Form.Item>
 
-          <Form.Item
-            rules={[
-              {
-                required: true,
-                message: "Please input your title",
-              },
-            ]}
-            name="titlear"
-            label="Title arabic"
-          >
-            <Input className="py-2" />
-          </Form.Item>
+          <div className=" grid grid-cols-1 gap-2 md:grid-cols-2">
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your beds number",
+                },
+              ]}
+              name="beds"
+              label="beds number"
+            >
+              <Input className="py-2" />
+            </Form.Item>
 
-         
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your baths number",
+                },
+              ]}
+              name="paths"
+              label="Baths number"
+            >
+              <Input className="py-2" />
+            </Form.Item>
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please input property space",
+                },
+              ]}
+              name="space"
+              label="Space"
+            >
+              <Input className="py-2" />
+            </Form.Item>
+
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please input Parks number",
+                },
+              ]}
+              name="parks"
+              label="Parks number"
+            >
+              <Input className="py-2" />
+            </Form.Item>
+
+
+
+
+
+
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please input property location",
+                },
+              ]}
+              name="location"
+              label="Location"
+            >
+              <Input className="py-2" />
+            </Form.Item>
+
+
+          </div>
+
+          <div className=" grid grid-cols-1 gap-2 md:grid-cols-2">
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please input Rent price",
+                },
+              ]}
+              name="rentprice"
+              label="Rent price"
+            >
+              <Input className="py-2" />
+            </Form.Item>
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please input Sell price",
+                },
+              ]}
+              name="sellprice"
+              label="Sell price"
+            >
+              <Input className="py-2" />
+            </Form.Item>
+          </div>
+
+          <div className=" grid grid-cols-3 md:grid-cols-5">
+
+          <Form.Item className=" " name="jin" valuePropName="checked">
+              <Checkbox> Jin </Checkbox>
+            </Form.Item>
+
+
+            <Form.Item className=" " name="garden" valuePropName="checked">
+              <Checkbox> Garden </Checkbox>
+            </Form.Item>
+
+            <Form.Item className=" " name="internet" valuePropName="checked">
+              <Checkbox> Internet </Checkbox>
+            </Form.Item>
+            <Form.Item className=" " name="laundry" valuePropName="checked">
+              <Checkbox> Laundry</Checkbox>
+            </Form.Item>
+            <Form.Item className=" " name="garage" valuePropName="checked">
+              <Checkbox> Garage </Checkbox>
+            </Form.Item>
+            <Form.Item className=" " name="dishwasher" valuePropName="checked">
+              <Checkbox> Dish washer </Checkbox>
+            </Form.Item>
+
+            <Form.Item className=" " name="pool" valuePropName="checked">
+              <Checkbox> Pool </Checkbox>
+            </Form.Item>
+            <Form.Item className=" " name="elevator" valuePropName="checked">
+              <Checkbox> Elevator </Checkbox>
+            </Form.Item>
+
+            <Form.Item className=" " name="camera" valuePropName="checked">
+              <Checkbox> Security camera </Checkbox>
+            </Form.Item>
+
+        
+          </div>
 
           <div className=" grid gap-3 md:grid-cols-3 lg:grid-cols-4 grid-cols-1">
             <div className=" flex  md:col-span-2 gap-2 items-center justify-center md:justify-start"></div>
           </div>
 
-          
-            <div>
-              <Form.Item
-                label="Description"
-                name="desc"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your description!",
-                  },
-                ]}
-              >
-                {/* <textarea rows={5}></textarea> */}
+          <div>
+            <Form.Item
+              label="Description"
+              name="desc"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your description!",
+                },
+              ]}
+            >
+              {/* <textarea rows={5}></textarea> */}
 
-                <ReactQuill
-                  modules={modules}
-                  theme="snow"
-                  className=" pb-[10px] border-[2.5px] text-black font-medium rounded-md border-teal-400 hover:border-blue-600"
-                />
-              </Form.Item>
-
-              <Form.Item
-                label="Description arabic"
-                name="descar"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your description!",
-                  },
-                ]}
-              >
-                {/* <textarea rows={5}></textarea> */}
-
-                <ReactQuill
-                  modules={modules}
-                  theme="snow"
-                  className=" ql-editor-rt pb-[10px] border-[2.5px] text-black font-medium rounded-md border-teal-400 hover:border-blue-600"
-                />
-              </Form.Item>
-
-              
-            </div>
-         
+              <ReactQuill
+                modules={modules}
+                theme="snow"
+                className=" pb-[10px] border-[2.5px] text-black font-medium rounded-md border-teal-400 hover:border-blue-600"
+              />
+            </Form.Item>
+          </div>
 
           {/* -----images upload----- */}
 
@@ -215,12 +323,6 @@ const RecipeForm = ({
               </div>
             ))}
           </div>
-
-   
-
-      
-
-      
 
           <div className=" ">
             <Button

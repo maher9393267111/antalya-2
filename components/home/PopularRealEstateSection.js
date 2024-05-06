@@ -6,7 +6,7 @@ import { Properties } from "../data/Propertiesdata"
 import PropertiesCard from "../../components/shared/PropertiesCard"
 import Link from 'next/link'
 
-function PopularRealEstateSection() {
+function PopularRealEstateSection({data}) {
   return (
     <section className="px-[5%] pt-[60px] py-[60px] md:py-[150px]">
         <div className="section-content max-w-[1200px] mx-auto">
@@ -28,13 +28,14 @@ function PopularRealEstateSection() {
                 className={`text-[30px] font-semibold text-[#000] sm:text-[40px] md:text-[38px] leading-tight text-center mb-[5px]`}
             >
                 Our choice of popular real estate
+                
             </h2>
             </motion.div>
 
         <div className="section-body mt-[60px]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                {Properties.map(property => (
-                    property.id >= '5' && 
+                {data?.map(property => (
+                     
                     <Link href={`/properties/details/${property.id}`} key={property.id}>
                     <PropertiesCard property={property} />
                     </Link> 
@@ -45,8 +46,8 @@ function PopularRealEstateSection() {
                 <div
                 className="flex justify-center items-center"
                 >
-                <button className="btn-secondary rounded-md mt-[60px] flex justify-center items-center gap-3 group">
-                    Browse all properties
+                <button className="btn-secondary text-2xl arabic rounded-md mt-[60px] flex justify-center items-center gap-3 group">
+                تصفح جميع العقارات لدينا
                 </button>
                 </div>
             </Link>

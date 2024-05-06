@@ -33,22 +33,65 @@ import list5 from "../../../public/listing-5.jpg";
 import PictureGallery from "../../../components/PropertiesDetails/PictureGallery.js";
 // import SwiperComponent from '../../../components/PropertiesDetails/SwiperComponent'
 
-function PropertyDetail() {
-	const router = useRouter();
-	const { propertyId } = router.query;
-	const id = parseInt(propertyId);
+import { getDocument } from '@/functions/firebase/getData';
+import Loader from '@/components/common/Loader';
+import { useAuth } from '@/functions/context';
 
-	const property = Properties.find((property) => property.id === id);
-	const description =
-		"Modern and bright, this downtown apartment offers proximity to the finest restaurants and entertainment";
-	if (property) {
+import React ,{useState ,useEffect} from 'react';
+
+function PropertyDetail() {
+
+
+    const [property, setProperty] = useState({});
+    
+  //  const [loacding, setLoading] = useState(false);
+    const {pageLoading, setPageLoading} = useAuth()
+  
+    const router = useRouter();
+    
+    const propertyId = router.query.propertyId;
+    
+  console.log("IDDD" , property)
+  
+    useEffect(() => {
+      const getProduct = async () => {
+       // setLoading(true);
+       setPageLoading(true)
+        //setProduct({});
+        const data = await getDocument("property", propertyId);
+        console.log(data, "fetch categories ====>>> 🎭🎭🎭>", data);
+        setProperty(data);
+        setPageLoading(false)
+       // setLoading(false);
+      };
+  
+      if (propertyId) getProduct();
+    }, [propertyId]);
+  
+
+    if(pageLoading){
+        return <Loader/>
+    }
+
+
+
+
+
+	
+	// const { propertyId } = router.query;
+	// const id = parseInt(propertyId);
+
+	// const property = Properties.find((property) => property.id === id);
+	// const description =
+	// 	"Modern and bright, this downtown apartment offers proximity to the finest restaurants and entertainment";
+	// if (property) {
 		return (
 			<>
 				<Header
-					summaryText={property.price}
-					title={property.description}
-					description={description}
-					image={`listing-${id}`}
+					summaryText={property.sellprice}
+					title={property.title}
+					description={property?.title}
+					image={`listing-${2}`}
 					cutout>
 					<Link href={`/postproperty`}>
 						<button className="btn-primary rounded-md mt-[60px] flex mx-auto gap-3 group">
@@ -83,16 +126,16 @@ function PropertyDetail() {
 								</div>
 								<div className="text-primary flex justify-center items-center gap-3">
 									<PiBathtubLight size={30} />
-									<p className="text-primary">{property.baths} Baths</p>
+									<p className="text-primary">{property.paths} Baths</p>
 								</div>
 								<div className="text-primary flex justify-center items-center gap-3">
 									<BsPlusSquare size={30} />{" "}
-									<p className="text-primary">{property.size} sqft</p>
+									<p className="text-primary">{property.space} sqft</p>
 								</div>
 								<div className="text-primary flex justify-center items-center gap-3">
 									<PiCarDuotone size={30} />{" "}
 									<p className="text-primary">
-										{property.parkingspots} Parking spots
+										{property.parks} Parking spots
 									</p>
 								</div>
 							</div>
@@ -256,13 +299,14 @@ function PropertyDetail() {
 				</div>
 			</>
 		);
-	} else {
-		return (
-			<>
-				<Nopage />
-			</>
-		);
-	}
+	// } 
+	// else {
+	// 	return (
+	// 		<>
+	// 			<Nopage />
+	// 		</>
+	// 	);
+	// }
 }
 
 export default PropertyDetail;

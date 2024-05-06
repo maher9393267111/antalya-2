@@ -68,7 +68,7 @@ export const getDocuments = async (col, querydata = null, limit = null) => {
 // send userState from component to getData and set response data inside useState
 //  get data of specific collection with sorting by created time
 
-export const getDocumentsOrder = async (col, orderBy,search=null) => {
+export const getDocumentsOrder = async (col, orderBy,search=null , limitcount) => {
   // get products with cat or sub with filteration when search != null 
   //index.jsx products
   //category
@@ -78,14 +78,22 @@ export const getDocumentsOrder = async (col, orderBy,search=null) => {
   //: null
 let q = null
 
+
+
+//if (limit !== null) queryConstraints.push(limit(limit));
+
 //category exists or subcategory exists that means not null
 //search is about where index.jsx product page line 41,43
 if (search === null) {
-  q = query(collection(db, col), orderBy);
+  q = query(collection(db, col), orderBy,limit !==null &&  limit(limitcount) );
 }
+
+
+
+
 else {
   //all products without searching (null)
-  q = query(collection(db, col), orderBy,search);
+  q = query(collection(db, col), orderBy,search , limit !==null && limit(limitcount));
 }
 
   //const q = query(collection(db, cal), orderBy);
