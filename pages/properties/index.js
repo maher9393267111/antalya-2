@@ -21,7 +21,7 @@ function Categories() {
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 items-start justify-start">
                 <PropertiesSearch />
 
-                {SearchFilters.map(filter => (
+                {SearchFilters?.map(filter => (
                   <motion.div 
                     variants={fadeIn("up", 0.5, 0)}
                     initial="offscreen"
@@ -42,7 +42,7 @@ function Categories() {
         <div className="section-content max-w-[1200px] mx-auto">
           <div className="section-body">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                {Properties.map(property => (
+                {Properties?.map(property => (
                     <Link href={`/properties/details/${property.id}`} key={property.id}>
                       <PropertiesCard property={property} />
                     </Link>

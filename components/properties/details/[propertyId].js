@@ -65,14 +65,14 @@ function PropertyDetail() {
 					<PictureGallery />
 				</div>
 					{/* properties details */}
-					<div className="flex flex-col lg:flex-row justify-start items-center gap-10">
-						<div className="lg:w-[60%] md:w-[100%] sm:w-[100%]">
+					<div dir="rtl" className="flex flex-col lg:flex-row justify-start items-center gap-10">
+						<div dir="rtl" className="lg:w-[60%] md:w-[100%] sm:w-[100%]">
 							<div className="">
 								<HeaderSummary
 									containerBorder="border-primary"
 									textColor="text-primary"
 									dotBgColor="bg-primary"
-									summaryText="Property details"
+									summaryText="تفاصيل العقار"
 								/>
 							</div>
 
