@@ -86,8 +86,10 @@ const RecipeForm = ({
             internet: initialValues?.internet || false,
             beds: initialValues?.beds || "",
             paths: initialValues?.paths || "",
+            parks: initialValues?.parks || "",
             space: initialValues?.paths || "",
             location: initialValues?.location || "الموقع مدينة انطالية belek  جانب فندق ارض السلاطين",
+            type: initialValues?.type ||"",
           }}
         >
           <Form.Item
@@ -104,6 +106,22 @@ const RecipeForm = ({
           </Form.Item>
 
           <div className=" grid grid-cols-1 gap-2 md:grid-cols-2">
+
+          <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please input Type",
+                },
+              ]}
+              name="type"
+              label="Villa type {3+1}"
+            >
+              <Input className="py-2" />
+            </Form.Item>
+
+
+
             <Form.Item
               rules={[
                 {
@@ -300,11 +318,11 @@ const RecipeForm = ({
 
           {/* -----show product images {update product} ---- */}
 
-          <div className="flex flex-wrap gap-3 mt-2 ">
+          <div className="flex flex-wrap gap-4 mt-2 ">
             {images?.map((data, index) => (
               <div key={index}>
                 <img src={data} className="w-20 h-20 rounded-full " />
-                <h1
+                <h4
                   onClick={() => {
                     // prev all previous images
                     setImages((prev) => {
@@ -319,7 +337,7 @@ const RecipeForm = ({
                   className="text-center cursor-pointer text-red-600"
                 >
                   remove
-                </h1>
+                </h4>
               </div>
             ))}
           </div>
