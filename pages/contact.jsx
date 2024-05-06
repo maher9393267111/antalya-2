@@ -89,8 +89,8 @@ function Contact() {
 
   
 		<>
-			<Header image={"/background-images/contact-bg.jpg"} summaryText={"Contact us"} styles={"mt-0"}>
-				<div className="display-1 shimmer arabic  text-3xl md:text-5xl !shadow-2xl relative -top-8 text-whit font-bold max-w-2xl mx-auto ">
+			<Header image={"/contact-bg.jpg"} summaryText={"Contact us"} styles={"mt-0"}>
+				<div className="display-1 shimmer arabic  text-3xl md:text-5xl !shadow- relative -top-8 text-whit font-bold max-w-2xl mx-auto ">
         تحدث مع أحد المتخصصين في العقارات
 				</div>
 			</Header>
