@@ -14,6 +14,7 @@ import {
   FaSnapchat,
   FaTiktok
 } from "react-icons/fa";
+import { GrWhatsapp } from "react-icons/gr";
 
 import { useTranslation } from "next-i18next";
 
@@ -62,11 +63,11 @@ export default function Navbar() {
           <div className="lg:flex lg:flex-row flex flex-col justify-center items-center space-x-12 lg:space-y-0 space-y-2">
             <div className="flex flex-row space-x-2">
               <FaMapMarkerAlt className="w-5 h-5 text-gray-500" />
-              <p>Istanbul , Turkey</p>
+              <p>Intalya , Turkey</p>
             </div>
             <div className="flex flex-row space-x-2">
               <FaMobileAlt className="w-5 h-5 text-gray-500" />
-              <p> (+90) 552 355 52 22</p>
+              <p> (+90)5385809972</p>
             </div>
             <div className="flex flex-row space-x-2">
               <FaRegClock className="w-5 h-5 text-gray-500" />
@@ -75,31 +76,36 @@ export default function Navbar() {
           </div>
           <div className="flex flex-row space-x-4  justify-center items-center ">
 
-          <a href="https://www.facebook.com/profile.php?id=61552907010288&mibextid=ZbWKwL" target="_blank">
+          <a href="https://www.facebook.com/profile.php?id=100083511842889&mibextid=ZbWKwL" target="_blank">
             <FaFacebook className="w-6 h-6 text-gray-500" />
             </a>
 
 
-            <a href="https://www.instagram.com/alusturizm?utm_source=qr&igsh=MWZudWhscTh4dGppbg==" target="_blank">
+            {/* <a href="https://www.instagram.com/alusturizm?utm_source=qr&igsh=MWZudWhscTh4dGppbg==" target="_blank">
             <FaInstagram className="w-6 h-6 text-gray-500" />
 
 
-</a>
+</a> */}
 
-            <a href="https://wtspee.com/905523555222" target="_blank">
+            <a href="https://wtspee.com/905385809972" target="_blank">
             <FaWhatsapp className="w-6 h-6 text-gray-500" />
             </a>
            
-
             
 
+<a href=" https://whatsapp.com/channel/0029VaTy7fpIHphLX7W7uP45" target="_blank">
+<FaWhatsapp className="w-6 h-6 text-gray-500" />
+</a>
+
+            
+{/* 
 <a href="https://www.snapchat.com/add/saluosh6?share_id=rgFIQU-SU4k&locale=ar-EG" target="_blank">
 <FaSnapchat className="w-6 h-6 text-gray-500" />
 </a>
 
 <a href="https://www.tiktok.com/@alwasitturizm?_t=8m1Fv865GeU&_r=1" target="_blank">
 <FaTiktok className="w-6 h-6 text-gray-500" />
-</a>
+</a> */}
 
 
 
@@ -117,7 +123,7 @@ export default function Navbar() {
               {/* <img className="w-18 logo object-cover rounded-full  h-16 mx-3" src="/cars/logo.png" alt="" /> */}
               {/* <Icon icon={spaIcon} className=" logo text-4xl mr-2"/> */}
               <span className="text-xl arabic shimmer">
-                {locale === "en" ? "antalya" : "شركة الوسيط علوش تورزم"}
+               Palm village
 
 
               </span>

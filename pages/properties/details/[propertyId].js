@@ -92,6 +92,7 @@ function PropertyDetail() {
 		desc:'ارجو التواصل',
 
 		phone: phone,
+		type:"property"
 	  }),
 	})
 	  .then((res) => res.json())

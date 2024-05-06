@@ -37,7 +37,7 @@ import { orderBy } from "@firebase/firestore";
           "property",
           orderBy("timeStamp", "asc"),
           null ,
-          1
+          2
           
           
          
@@ -73,13 +73,13 @@ import { orderBy } from "@firebase/firestore";
         <HomeHero />
 
         <main className='font-semibold'>
-          <FilterSection />
+          {/* <FilterSection /> */}
           <PopularRealEstateSection data={products} />
-          <SearchCaregory />
+          {/* <SearchCaregory />
           <LatestPropertiesSection />
           <AboutUs />
           <Testimonials />
-          <BlogsSection />
+          <BlogsSection /> */}
         </main>
       </div>
       </Layout>

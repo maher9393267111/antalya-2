@@ -21,7 +21,7 @@ const   Header =({title, description, image, children, summaryText, cutout, styl
           whileInView="onscreen"
           viewport={{ once: true, amount: 0 }}
         >
-          <HeaderSummary summaryText={summaryText}/>
+          {/* <HeaderSummary summaryText={summaryText}/> */}
         </motion.div>
 
         <motion.h1 

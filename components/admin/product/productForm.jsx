@@ -87,7 +87,7 @@ const RecipeForm = ({
             beds: initialValues?.beds || "",
             paths: initialValues?.paths || "",
             space: initialValues?.paths || "",
-            location: initialValues?.location || "",
+            location: initialValues?.location || "الموقع مدينة انطالية belek  جانب فندق ارض السلاطين",
           }}
         >
           <Form.Item
@@ -164,12 +164,12 @@ const RecipeForm = ({
 
 
             <Form.Item
-              rules={[
-                {
-                  required: true,
-                  message: "Please input property location",
-                },
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please input property location",
+              //   },
+              // ]}
               name="location"
               label="Location"
             >

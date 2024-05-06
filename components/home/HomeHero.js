@@ -11,7 +11,7 @@ function HomeHero() {
           title={'حيث تصبح منازل الأحلام حقيقة'}
           image={"/hero.jpg"}
           description={'اكتشف أكثر من 1000+ عرض عقاري.'}
-          styles={"mt-16"}
+          styles={"mt-0"}
         >
            <a href="https://wtspee.com/905385809972" target="_blank">
 						<button className=" arabic btn-primary rounded-md mt-[60px] flex mx-auto gap-3 group">
