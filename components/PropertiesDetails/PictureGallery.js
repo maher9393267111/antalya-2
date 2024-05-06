@@ -14,21 +14,66 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 import photos from "./Photos";
 
-export default function App() {
+export default function GalleryPictures({images}) {
   const [index, setIndex] = useState(-1);
 
   return (
     <>
-      <PhotoAlbum photos={photos} layout="rows" targetRowHeight={410} onClick={({ index }) => setIndex(index)} />
+
+
+
+<div className="grid grid-cols-2 lg:grid-cols-4 gap-5 items-start justify-center">
+
+
+
+{images?.map((img , index)=>{
+
+return (
+
+  <div key={index} className="w-full">
+    
+      
+      <img
+      src={img} 
+          // src={props.property.image}
+          // alt={props.property.description}
+          width={1500} 
+          height={1000}
+          className="block w-full lg:!h-[200px] object-cover object-center group-hover:scale-110 transition-all duration-300"
+      />
+  
+
+  </div>
+
+
+
+
+)
+
+
+})}
+
+
+
+
+  </div>
+
+
+
+
+    
+      {/* <PhotoAlbum photos={images} layout="rows" targetRowHeight={410} onClick={({ index }) => setIndex(index)} />
 
       <Lightbox
-        slides={photos}
+        slides={images}
         open={index >= 0}
         index={index}
         close={() => setIndex(-1)}
         // enable optional lightbox plugins
         plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
-      />
+      /> */}
+
+
     </>
   );
 }

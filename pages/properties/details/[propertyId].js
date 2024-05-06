@@ -5,6 +5,7 @@ import arrow from "../../../public/650adcad05bc07eb4bae8dbf_arrow.svg";
 import Link from "next/link";
 // import SwiperComponent from '../../../components/PropertiesDetails/SwiperComponent'
 import { LiaBedSolid } from "react-icons/lia";
+import parse from "html-react-parser";
 import {
 	PiBathtubLight,
 	PiCarDuotone,
@@ -38,6 +39,7 @@ import Loader from '@/components/common/Loader';
 import { useAuth } from '@/functions/context';
 
 import React ,{useState ,useEffect} from 'react';
+import Layout from "@/components/layout";
 
 function PropertyDetail() {
 
@@ -69,7 +71,7 @@ function PropertyDetail() {
     }, [propertyId]);
   
 
-    if(pageLoading){
+    if(pageLoading  || !property){
         return <Loader/>
     }
 
@@ -86,12 +88,15 @@ function PropertyDetail() {
 	// 	"Modern and bright, this downtown apartment offers proximity to the finest restaurants and entertainment";
 	// if (property) {
 		return (
+			<Layout>
+
+			
 			<>
 				<Header
 					summaryText={property.sellprice}
 					title={property.title}
 					description={property?.title}
-					image={`listing-${2}`}
+					image={property?.images?.length && property?.images[0]}
 					cutout>
 					<Link href={`/postproperty`}>
 						<button className="btn-primary rounded-md mt-[60px] flex mx-auto gap-3 group">
@@ -105,7 +110,7 @@ function PropertyDetail() {
 				<div className="general-margin mt-20">
 				{/* Gallery */}
 				<div className="my-20 mx-3 md:mx-10 rounded-md">
-					<PictureGallery />
+					<PictureGallery images={property?.images} />
 				</div>
 					{/* properties details */}
 					<div dir="rtl" className="flex flex-col lg:flex-row justify-start items-center gap-10">
@@ -115,111 +120,129 @@ function PropertyDetail() {
 									containerBorder="border-primary"
 									textColor="text-primary"
 									dotBgColor="bg-primary"
-									summaryText="Property details"
+									summaryText="تفاصيل العقار"
 								/>
 							</div>
 
 							<div className="text-red-500 flex justify-between items-center lg:w-[80%] md:w-[80%] sm:w-full my-8">
 								<div className="text-primary flex justify-center items-center gap-3">
 									<LiaBedSolid size={30} />
-									<p className="text-primary">{property.beds} Bed</p>
+									<p className="arabic text-primary">{property.beds} سرير</p>
 								</div>
 								<div className="text-primary flex justify-center items-center gap-3">
 									<PiBathtubLight size={30} />
-									<p className="text-primary">{property.paths} Baths</p>
+									<p className="arabic text-primary">{property.paths} حمام</p>
 								</div>
 								<div className="text-primary flex justify-center items-center gap-3">
 									<BsPlusSquare size={30} />{" "}
-									<p className="text-primary">{property.space} sqft</p>
+									<p className="arabic text-primary">{property.space}m2 المساحة</p>
 								</div>
 								<div className="text-primary flex justify-center items-center gap-3">
 									<PiCarDuotone size={30} />{" "}
-									<p className="text-primary">
-										{property.parks} Parking spots
+									<p className="arabic text-primary">
+										{property.parks} حديقة
 									</p>
 								</div>
 							</div>
 							<hr className="my-10" />
 
 							<div>
-								<div>
-									<h3 className="mb-8">Regarding the Property:</h3>
-									<p>
-										In a symphony of elegance and tranquility, this property
-										reveals itself, nestling amidst the serene contours of its
-										surroundings. The facade, a harmonious blend of
-										sophistication and simplicity, whispers tales of design
-										excellence. Each nook and cranny resonate with the melody of
-										high-quality craftsmanship, the walls telling tales of
-										unparalleled comfort and timeless style.
-									</p>
-								</div>
+	{/* -desck parse						 */}
 
-								<div>
-									<ul className="list-decimal my-12">
-										<li>Sed consequat leo</li>
-										<li>Vestibulum purus quam scelerisque</li>
-										<li>Vestibulum turpis sem aliquet eget</li>
-										<li>Ut non enim</li>
-										<li>Vivamus quis mi</li>
-									</ul>
+	{property?.desc &&
+<div className="arabic">
 
-									<p>
-										A gateway to luxury, the property unfolds a canvas where
-										every stroke is a brush of meticulous detail, painting a
-										world where elegance meets functionality. It’s not just a
-										dwelling, but a realm where every square inch is a testament
-										to excellence in architecture, a space where the symphony of
-										luxury and comfort plays on a continuous loop, offering an
-										unrivaled living experience.
-									</p>
-								</div>
+{parse(property?.desc)}
+</div>
+
+	}
+
 								<hr className="my-12" />
 								<div>
 									<HeaderSummary
 										containerBorder="border-primary"
 										textColor="text-primary"
 										dotBgColor="bg-primary"
-										summaryText="Property amenities"
+										summaryText="مزايا العقار"
 									/>
 								</div>
-								<div className="grid grid-cols-3 gap-y-[10%]">
+								<div className="grid arabic grid-cols-3 gap-y-[10%]">
+									
+{property?.garden &&
 									<div className="text-primary flex justify-start items-center gap-3">
 										<PiTree size={30} />
-										<p className="text-primary">Garden</p>
+										<p className=" arabic text-primary">حديقة</p>
+				
 									</div>
+ }
+
+{property?.camera &&
 									<div className="text-primary flex justify-start items-center gap-3">
 										<GiCctvCamera size={30} />
-										<p className="text-primary">Security Camera</p>
+										<p className= " arabic text-primary">كاميرات مراقبة</p>
 									</div>
+}
+
+{property?.laundry &&
+
 									<div className="text-primary flex justify-start items-center gap-3">
 										<MdOutlineLocalLaundryService size={30} />
-										<p className="text-primary">Laundry</p>
+										<p className=" arabic text-primary">غسالة</p>
 									</div>
+
+}
+
+{property?.wifi &&
 									<div className="text-primary flex justify-start items-center gap-3">
 										<FiWifi size={30} />{" "}
-										<p className="text-primary">Internet</p>
+										<p className=" arabic text-primary">انترنت</p>
 									</div>
+
+}
+
+
+{property?.pool &&
+
 									<div className="text-primary flex justify-start items-center gap-3">
 										<PiSwimmingPoolThin size={30} />
-										<p className="text-primary">Pool</p>
+										<p className=" arabic text-primary">مسبح</p>
 									</div>
+
+}
+
+{property?.garage &&
+
 									<div className="text-primary flex justify-start items-center gap-3">
 										<RiParkingBoxLine size={30} />
-										<p className="text-primary">Garage</p>
+										<p className=" arabic text-primary">كراج سيارات</p>
 									</div>
+
+}
+
+
+{property?.jacu &&
 									<div className="text-primary flex justify-start items-center gap-3">
 										<PiBathtubLight size={30} />
-										<p className="text-primary">Jacuzzi</p>
+										<p className=" arabic text-primary">جاكوزي</p>
 									</div>
+
+}
+
+{property?.elevator &&
 									<div className="text-primary flex justify-start items-center gap-3">
 										<PiDoorOpen size={30} />
-										<p className="text-primary">Elevator</p>
+										<p className=" arabic text-primary">مصعد</p>
 									</div>
+
+}
+
+{property?.dishwasher &&
 									<div className="text-primary flex justify-start items-center gap-3">
 										<CiForkAndKnife size={30} />
-										<p className="text-primary">Dish Washer</p>
+										<p className=" arabic text-primary"> غسالة صحون </p>
 									</div>
+
+}
 								</div>
 							</div>
 						</div>
@@ -227,17 +250,26 @@ function PropertyDetail() {
 						{/* Pricing Card */}
 						<div className="lg:w-[35%] md:w-full sm:w-full border p-8 rounded-md shadow-md">
 							<div className="p-x-5">
-								<div>
-									<p className="bg-red-500 text-white p-2 rounded-lg w-fit my-4">
-										{property.type}
+								<div className="flex gap-2 items-center">
+									<p className="bg-red-500 arabic font-semibold text-white p-2 rounded-lg w-fit my-4">
+										سعر البيع
 									</p>
-									<h1>{property.price}</h1>
+									<p>{property.sellprice}$</p>
 								</div>
+
+								<div className="flex gap-2 items-center">
+									<p className="bg-red-500 arabic font-semibold text-white p-2 rounded-lg w-fit my-4">
+										سعر الايجار
+									</p>
+									<p>{property.rentprice}$</p>
+								</div>
+
+
 								<hr className="mt-4" />
 								<div>
-									<h4 className=" my-4">Get in touch to receive more info</h4>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									<h3 className=" arabic my-4">تواصل معنا</h3>
+									<p className="arabic">
+										للحصول على المزيد من المعلومات
 									</p>
 								</div>
 								<div>
@@ -260,9 +292,16 @@ function PropertyDetail() {
 											placeholder="+1 345-678"
 										/>{" "}
 										<br /> <br />
-										<button className="justify-center border w-full text-center py-4 btn-secondary">
-											Get in Touch
+										<button className=" arabic justify-center border w-full text-center py-4 btn-secondary">
+											ارسال الى الايميل
 										</button>
+
+										<button className=" arabic justify-center mt-4 border w-full text-center py-4 btn-secondary">
+											تواصل وتس اب
+										</button>
+
+
+
 									</form>
 								</div>
 							</div>
@@ -271,7 +310,7 @@ function PropertyDetail() {
 
 					{/* Browse all properties */}
 					<div className="mt-32">
-						<div className="grid lg:grid-cols-2 md:grid-cols-1 sm-max:grid-cols-1 gap-5">
+						{/* <div className="grid lg:grid-cols-2 md:grid-cols-1 sm-max:grid-cols-1 gap-5">
 							{featuredProperties.map((property, index) => (
 								<AllProperties
 									key={index}
@@ -287,26 +326,23 @@ function PropertyDetail() {
 									featured={property.featured}
 								/>
 							))}
-						</div>
+						</div> */}
 
 						<Link
 							href={"/properties"}
-							className="btn-secondary mx-auto w-fit flex justify-center mt-20 mb-44 ">
-							Browse all proterties
+							className="btn-secondary arabic mx-auto w-fit flex justify-center mt-20 mb-44 ">
+							تصفح كافة العقارات
 						</Link>
 					</div>
 					{/* <SwiperComponent /> */}
 				</div>
 			</>
+
+
+
+			</Layout>
 		);
-	// } 
-	// else {
-	// 	return (
-	// 		<>
-	// 			<Nopage />
-	// 		</>
-	// 	);
-	// }
+
 }
 
 export default PropertyDetail;

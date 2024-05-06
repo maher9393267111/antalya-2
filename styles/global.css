@@ -549,6 +549,12 @@ body {
   
 }
 
+
+.ql-direction-rtl{
+  font-family: 'Bahij';
+}
+
+
 /* body{
   overflow-x: hidden;
 } */
