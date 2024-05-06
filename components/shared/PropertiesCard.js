@@ -30,7 +30,7 @@ const PropertiesCard = (props) => {
                 <figure className="overflow-hidden">
                     <Image
                         src={props.property.images[0]}
-                        alt={props.property.desc}
+                        alt={props.property?.title}
                         width={1500} 
                         height={1000}
                         className="block w-full object-cover object-center group-hover:scale-110 transition-all duration-300"
