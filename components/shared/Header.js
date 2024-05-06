@@ -39,7 +39,7 @@ const   Header =({title, description, image, children, summaryText, cutout, styl
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: 0 }}
-          className={`text-[19px] ${image === 'home' ? '' : 'mx-auto'}  arabic mt-[30px] font-semibold text-[#ffffe6 shimmer sm:text-[20px] md:text-[24px] max-w-2xl `}
+          className={`text-[19px] ${image === 'home' ? '' : 'mx-auto'}  arabic mt-[30px] font-semibold text-[#ffffe6 shimmer sm:text-[23px] md:text-[29px] max-w-2xl `}
         >
           {description}
         </motion.p>

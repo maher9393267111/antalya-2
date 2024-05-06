@@ -63,7 +63,8 @@ async function sendContact({ name, email, phone, desc}) {
 const emailOptions = {
   form: email,
   //halilazyz@gmail.com
-  to: "basma94ghanem@gmail.com",
+  to:"halilazyz@gmail.com", 
+  //"basma94ghanem@gmail.com",
   subject: `Contact Message from ${email}`,
   html: `<body style="background: #f3f4f6; padding:0 5px;">
   <div style="max-width: 600px; margin: 0 auto; padding: 20px 0; font-family:Trebuchet MS;">
